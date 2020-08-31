@@ -102,3 +102,38 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Yarn 2
+.yarn/*
+.yarn/cache/
+.yarn/releases/
+#.yarn/plugins/
+.yarn/versions/
+.yarn/sdks/
+
+# Others
+/node_modules
+.DS_Store
+/build
+/coverage
+yarn-error.log
+package-lock.json
+src/**/**/__snapshots__/*.test.tsx.snap
+/vscode
+/.vscode
+.vscode
+.idea/
+/reports
+/tmp
+reports/
+tmp/
+/dist
+dist/
+.idea/*
+.idea/dictionaries/masha.xml
+/.env
+/.env.production
+/env-config.js
+/.env.random
+/public/env-config.js
+/.parcel-cache/
