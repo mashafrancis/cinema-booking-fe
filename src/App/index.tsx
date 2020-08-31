@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { AppProps } from './interfaces';
+import Routes from '../routes';
 
-export const App: React.FunctionComponent<AppProps> = props => {
+export const App: React.FunctionComponent<AppProps> = (props) => {
   return (
-    <h3>Hello cinema!</h3>
+    <React.StrictMode>
+      <Routes />
+    </React.StrictMode>
   );
 };
 

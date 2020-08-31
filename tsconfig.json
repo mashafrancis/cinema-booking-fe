@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "esnext",
     "lib": [
       "es6",
       "es2017",
@@ -15,11 +15,11 @@
     "strictNullChecks": true,
     "noImplicitThis": true,
     "strictBindCallApply": true,
-//    "strict": true,
+    "strict": true,
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-//    "noImplicitAny": true,
+    "inlineSourceMap": true,
     "declaration": true,
     "declarationMap": true,
     "removeComments": true,
@@ -31,12 +31,28 @@
     "allowJs": true,
     "noEmit": false,
     "importHelpers": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@context/*": [
+        "src/context/*"
+      ]
+    }
   },
   "include": [
-    "src/"
+    "./src/**/*"
   ],
   "exclude": [
+    "node_modules",
     ".yarn",
     "tests",
     "dist",

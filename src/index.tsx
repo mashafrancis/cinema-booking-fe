@@ -1,6 +1,7 @@
 // react libraries
 import React from 'react';
 import { render } from 'react-dom';
+import 'source-map-support/register';
 
 // third party packages
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -10,7 +11,7 @@ import App from './App';
 
 render(
   <Router>
-    <App/>
+    <App />
   </Router>,
   document.getElementById('root'),
 );

@@ -1,5 +1,3 @@
-export interface AppProps {
-}
+export interface AppProps {}
 
-export interface AppState {
-}
+export interface AppState {}
