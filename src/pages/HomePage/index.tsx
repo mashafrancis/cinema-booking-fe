@@ -1,5 +1,5 @@
 // react library
-import * as React from 'react';
+import React from 'react';
 
 const HomePage = (): JSX.Element => {
   return (

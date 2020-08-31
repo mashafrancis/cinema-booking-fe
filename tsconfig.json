@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2017",
     "lib": [
       "es6",
       "es2017",
       "esnext.asynciterable",
       "dom"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "@types/jest"
     ],
     "downlevelIteration": true,
     "allowSyntheticDefaultImports": true,
@@ -19,12 +25,11 @@
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "inlineSourceMap": true,
     "declaration": true,
     "declarationMap": true,
     "removeComments": true,
     "skipLibCheck": true,
-    "module": "commonjs",
+    "module": "esnext",
     "pretty": true,
     "sourceMap": true,
     "outDir": "./dist",
@@ -60,7 +65,6 @@
     "**/*.test.ts",
     "public",
     "jest",
-    "src/setupMocks.ts",
-    "src/setupEnzyme.ts"
+    "src/testHelpers.tsx"
   ]
 }

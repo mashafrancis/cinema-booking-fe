@@ -1,5 +1,5 @@
 // react libraries
-import * as React from 'react';
+import React from 'react';
 
 // third party packages
 import { Redirect, Route, Switch } from 'react-router-dom';

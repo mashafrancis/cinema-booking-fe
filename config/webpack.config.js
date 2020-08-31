@@ -1,5 +1,5 @@
 const path = require('path');
-const { importer } = require('./webpack.util');
+const {importer} = require('./webpack.util');
 const {
   definePlugin,
   cleanWebpack,
@@ -73,7 +73,7 @@ module.exports = {
               sourceMap: true,
               implementation: require('sass'),
               sassOptions: {
-                fiber: require('fibers'),
+                // fiber: require('fibers'),
                 importer,
               },
             },
