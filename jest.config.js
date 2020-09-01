@@ -36,7 +36,7 @@ module.exports = {
     '@pages/(.*)$': '<rootDir>src/pages/$1',
   },
   // resolver: '<rootDir>/resolver.js',
-  // moduleDirectories: ['utils', 'modules'],
+  moduleDirectories: ['node_modules'],
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.ts',
@@ -53,12 +53,9 @@ module.exports = {
       'statements': 60,
     },
   },
-  setupFiles: [
-    '<rootDir>/node_modules/regenerator-runtime/runtime',
-    // '<rootDir>/src/setupMocks.ts',
-  ],
   coveragePathIgnorePatterns: [
     '<rootDir>/src/index.tsx',
+    '<rootDir>/src/testHelpers.tsx',
   ],
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',

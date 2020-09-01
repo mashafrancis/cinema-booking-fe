@@ -6,8 +6,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isDevMode = process.env.NODE_ENV === 'development';
-
 /**
  * Parses environment variables into a format acceptable by the webpack DefinePlugin
  * @param {object} configs Object literal containing configuration variables to
@@ -28,7 +26,7 @@ const { parsed: dotenvConfigs } = dotenv.config();
 const processedDotenvConfigs = parseConfigs(dotenvConfigs);
 
 const definePlugin = new webpack.DefinePlugin({
-  'process.env': { ...processedDotenvConfigs, ...systemVariables },
+  'process.env': { ...processedDotenvConfigs, ...systemVariables }, // lgtm [js/build-artifact-leak]
 });
 
 // instantiating webpack dependencies
@@ -42,7 +40,7 @@ const htmlWebpack = new htmlWebpackPlugin({
   template: './public/index.html',
   filename: 'index.html',
   inject: 'body',
-  title: 'Almond',
+  title: 'Cinema Booking',
   favicon: './public/favicon.ico',
   minify: {
     removeComments: true,

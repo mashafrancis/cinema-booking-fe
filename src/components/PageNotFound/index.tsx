@@ -1,5 +1,5 @@
 // react library
-import * as React from 'react';
+import React from 'react';
 
 // third-party libraries
 import { ArrowBackRounded } from '@material-ui/icons';
@@ -24,8 +24,7 @@ const PageNotFound = (props: PageNotFoundProps): JSX.Element => (
         Sorry but the page you are looking for does not exist, have been
         removed. name changed or is temporarily unavailable
       </p>
-      <ArrowBackRounded onClick={props?.history?.goBack} />
-      <span className="mdc-button__label">Back</span>
+      <ArrowBackRounded />
     </div>
   </div>
 );

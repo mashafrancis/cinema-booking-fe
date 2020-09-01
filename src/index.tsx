@@ -1,7 +1,6 @@
 // react libraries
 import React from 'react';
 import { render } from 'react-dom';
-import 'source-map-support/register';
 
 // third party packages
 import { BrowserRouter as Router } from 'react-router-dom';

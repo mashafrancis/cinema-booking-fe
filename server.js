@@ -7,6 +7,7 @@ const app = express();
 app.use(express.static(`${__dirname}/dist`));
 
 app.get('*', (req, res) => {
+  // lgtm [js/missing-rate-limiting]
   res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
 
