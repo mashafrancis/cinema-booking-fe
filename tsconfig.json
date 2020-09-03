@@ -24,7 +24,7 @@
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
+//    "esModuleInterop": true,
     "declaration": true,
     "declarationMap": true,
     "removeComments": true,
