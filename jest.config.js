@@ -29,7 +29,7 @@ module.exports = {
     'clover',
   ],
   moduleNameMapper: {
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/src/**/*.fixtures.ts',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': 'identity-obj-proxy',
     '\\.(css|less|scss)$': 'identity-obj-proxy',
     '@utils/(.*)$': '<rootDir>/src/utils/$1',
     '@components/(.*)$': '<rootDir>src/components/$1',
@@ -47,10 +47,10 @@ module.exports = {
   ],
   coverageThreshold: {
     global: {
-      'branches': 40,
-      'functions': 45,
-      'lines': 65,
-      'statements': 60,
+      'branches': 10,
+      'functions': 15,
+      'lines': 15,
+      'statements': 10,
     },
   },
   coveragePathIgnorePatterns: [

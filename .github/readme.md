@@ -2,7 +2,7 @@
 
 ## cinema-booking-fe
 
-![.github/workflows/ci.yml](https://github.com/mashafrancis/cinema-booking-fe/workflows/.github/workflows/ci.yml/badge.svg)
+![CI](https://github.com/mashafrancis/cinema-booking-fe/workflows/CI/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5c2b13c6c54f8676f64d/maintainability)](https://codeclimate.com/github/mashafrancis/cinema-booking-fe/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5c2b13c6c54f8676f64d/test_coverage)](https://codeclimate.com/github/mashafrancis/cinema-booking-fe/test_coverage)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/mashafrancis/cinema-booking-fe.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/mashafrancis/cinema-booking-fe/context:javascript)
@@ -14,7 +14,7 @@
 
     Cinema booking frontend application
 
-  [![Almond](../public/images/readme.svg)](https://cinema.booking-staging.herokuapp.com/)
+  [![Cinema](../public/images/readme.svg)](https://cinema.booking-staging.herokuapp.com/)
 
   #### Simple but complicated movie booking
 
