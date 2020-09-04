@@ -34,6 +34,7 @@ module.exports = {
     '@utils/(.*)$': '<rootDir>/src/utils/$1',
     '@components/(.*)$': '<rootDir>src/components/$1',
     '@pages/(.*)$': '<rootDir>src/pages/$1',
+    '@context/(.*)$': '<rootDir>src/context/$1',
   },
   // resolver: '<rootDir>/resolver.js',
   moduleDirectories: ['node_modules'],
@@ -45,14 +46,14 @@ module.exports = {
     '!src/**/*interfaces.d.ts',
     '!src/testHelpers.tsx'
   ],
-  coverageThreshold: {
-    global: {
-      'branches': 10,
-      'functions': 15,
-      'lines': 15,
-      'statements': 10,
-    },
-  },
+  // coverageThreshold: {
+  //   global: {
+  //     'branches': 10,
+  //     'functions': 15,
+  //     'lines': 15,
+  //     'statements': 10,
+  //   },
+  // },
   coveragePathIgnorePatterns: [
     '<rootDir>/src/index.tsx',
     '<rootDir>/src/testHelpers.tsx',
