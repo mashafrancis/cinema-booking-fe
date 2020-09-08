@@ -1,3 +1,5 @@
-export interface AppProps {}
+export interface AppProps {
+  user: any
+}
 
 export interface AppState {}

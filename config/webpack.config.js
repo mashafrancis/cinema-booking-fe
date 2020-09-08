@@ -73,7 +73,6 @@ module.exports = {
               sourceMap: true,
               implementation: require('sass'),
               sassOptions: {
-                // fiber: require('fibers'),
                 importer,
               },
             },
@@ -86,6 +85,7 @@ module.exports = {
           /node_modules/,
           /node_modules\/@material/,
           /node_modules\/(?!(@material-ui\/core\/es)\/).*/,
+          /node_modules\/(?!(@feathersjs|debug))/,
         ],
         use: {
           loader: require.resolve('babel-loader'),

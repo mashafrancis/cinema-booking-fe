@@ -7,8 +7,10 @@ import PageBottomNavigation from '@components/BottomNavigation';
 import { ComponentContext } from '@context/ComponentContext';
 import { ComponentRoutes } from '@components/ComponentRoutes';
 import HomePage from '@pages/HomePage';
-
-// utils
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 // interfaces
 import {
@@ -20,6 +22,7 @@ import {
 import './AppContainer.scss';
 import ErrorBoundary from '@components/ErrorBoundary';
 import { useViewport } from '../../hooks';
+import client from "@utils/authSockets";
 
 const AppContainer: React.FunctionComponent<AppContainerProps> = (props) => {
   const componentContext = React.useContext(ComponentContext);
@@ -32,7 +35,7 @@ const AppContainer: React.FunctionComponent<AppContainerProps> = (props) => {
   const { width } = useViewport();
   const breakpoint = 539;
 
-  const { selectedIndex } = componentContext;
+  const { selectedIndex, openSnack, handleClose, snackMessage } = componentContext;
 
   return (
     <div className="container">
@@ -49,6 +52,26 @@ const AppContainer: React.FunctionComponent<AppContainerProps> = (props) => {
           {width < breakpoint && <PageBottomNavigation />}
         </>
       )}
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={openSnack}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={snackMessage}
+        action={
+          <>
+            <Button color="secondary" size="small" onClick={handleClose}>
+              UNDO
+            </Button>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </>
+        }
+      />
     </div>
   );
 };
