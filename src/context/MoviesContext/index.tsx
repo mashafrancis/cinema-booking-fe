@@ -1,33 +1,57 @@
 import * as React from 'react';
 import axios from 'axios';
 import generateUrlWithQuery from '@utils/generateUrlWithQuery';
+import {IMovie} from "@context/MoviesContext/interfaces";
+import httpRequest from "@utils/http";
 
 const MoviesContext = React.createContext({
   movie: {},
-  movieId: '',
   loading: false,
-  setMovieId: () => {},
-  searchedMovies: () => {},
-  handleSearchChange: (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-  ) => {},
-  handleSearchSubmit: (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-  ) => {},
+  setSearch: () => {
+  },
+  searchedMovies: () => {
+  },
+  handleSearchChange: (e: any) => {
+  },
+  handleSearchSubmit: (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  },
 });
 
 interface IProps {
   children: React.ReactNode;
 }
 
-const MoviesProvider = ({ children, ...props }: IProps) => {
+const MoviesProvider = ({children, ...props}: IProps) => {
   const [loading, setLoading] = React.useState<boolean>(true);
-  const [movie, setMovie] = React.useState<any>({});
-  const [movieId, setMovieId] = React.useState<string>('tt3896198');
-  const [search, setSearch] = React.useState<any>({ i: movieId });
+  const [movie, setMovie] = React.useState<IMovie>({
+    Actors: "",
+    Awards: "",
+    BoxOffice: "",
+    Country: "",
+    DVD: "",
+    Director: "",
+    Genre: "",
+    Language: "",
+    Metascore: "",
+    Plot: "",
+    Poster: "",
+    Production: "",
+    Rated: "",
+    Ratings: [],
+    Released: "",
+    Response: "",
+    Runtime: "",
+    Title: "",
+    Type: "",
+    Website: "",
+    Writer: "",
+    Year: "",
+    imdbID: "",
+    imdbRating: "",
+    imdbVotes: ""
+  });
+  const [search, setSearch] = React.useState<{}>({});
   const [searchedMovies, setSearchedMovies] = React.useState<any>([]);
-
-  const url = Buffer.from(`&i=${movieId}`).toString('base64');
 
   const http = axios.create({
     baseURL: `http://www.omdbapi.com`,
@@ -36,12 +60,7 @@ const MoviesProvider = ({ children, ...props }: IProps) => {
     },
   });
 
-  const query = { i: movieId };
-  const endpoint = generateUrlWithQuery('/', query);
-  console.log(
-    'Class: , Function: MoviesProvider, Line 43 endpoint():',
-    endpoint,
-  );
+  const endpoint = generateUrlWithQuery('/', search);
 
   const fetchMovie = async () => {
     try {
@@ -54,14 +73,26 @@ const MoviesProvider = ({ children, ...props }: IProps) => {
     }
   };
 
-  const handleSearchChange = (e: any) => setSearch(e.target.value);
+  const handleSearchChange = (query: React.SetStateAction<{}>) => setSearch(query);
 
   const handleSearchSubmit = async (e: any) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const searchedMovieData = await http.get(url);
+      const searchedMovieData = await http.get(endpoint);
       setSearchedMovies(searchedMovieData);
+
+      // create ticket
+      const {imdbID, Title, Poster, Plot, Year} = searchedMovieData.data;
+      const movieTicket = {
+        movieId: imdbID,
+        name: Title,
+        image: Poster,
+        summary: Plot,
+        year: Year
+      }
+      await httpRequest.post('tickets', movieTicket)
+
       setLoading(false);
     } catch (e) {
       console.log('error', e);
@@ -70,16 +101,15 @@ const MoviesProvider = ({ children, ...props }: IProps) => {
 
   React.useEffect(() => {
     fetchMovie().then(() => setLoading(false));
-  }, [url]);
+  }, [search]);
 
   return (
     <MoviesContext.Provider
       value={{
         movie,
-        movieId,
         loading,
         // @ts-expect-error
-        setMovieId,
+        setSearch,
         searchedMovies,
         handleSearchChange,
         handleSearchSubmit,
@@ -92,4 +122,4 @@ const MoviesProvider = ({ children, ...props }: IProps) => {
 };
 
 const MoviesConsumer = MoviesContext.Consumer;
-export { MoviesProvider, MoviesContext, MoviesConsumer };
+export {MoviesProvider, MoviesContext, MoviesConsumer};

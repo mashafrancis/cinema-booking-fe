@@ -1,19 +1,20 @@
 // react libraries
 import * as React from 'react';
-import { render } from 'react-dom';
+import {render} from 'react-dom';
+import {Provider} from "react-redux";
 
 // third party packages
-import { BrowserRouter as Router } from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 // components
-import { MoviesProvider } from '@context/MoviesContext';
 import App from './App';
+import store from "./store";
 
 render(
-  <MoviesProvider>
+  <Provider store={store}>
     <Router>
-      <App />
+      <App/>
     </Router>
-  </MoviesProvider>,
+  </Provider>,
   document.getElementById('root'),
 );

@@ -37,15 +37,15 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const SearchInput: React.FunctionComponent = (props) => {
   const classes = useStyles(props);
-  const characterDetails = React.useContext(MoviesContext);
-  const { handleSearchChange, handleSearchSubmit } = characterDetails;
+  const movieDetails = React.useContext(MoviesContext);
+  const { handleSearchChange, handleSearchSubmit } = movieDetails;
 
   const componentContext = React.useContext(ComponentContext);
   const { setSelectedIndex } = componentContext;
 
-  const searchSubmit = async (e: any) => {
-    await handleSearchSubmit(e);
-    setSelectedIndex(2);
+  const searchSubmit = async () => {
+    await handleSearchSubmit;
+    setSelectedIndex(1);
   };
 
   return (
@@ -59,15 +59,16 @@ export const SearchInput: React.FunctionComponent = (props) => {
         type="submit"
         className={classes.iconButton}
         aria-label="search"
+        onClick={() => searchSubmit().then(() => setSelectedIndex(1))}
       >
         <SearchIcon />
       </IconButton>
       <InputBase
         className={classes.input}
         fullWidth
-        placeholder="Search for a hero or villain"
-        inputProps={{ 'aria-label': 'search characters' }}
-        onChange={(e) => handleSearchChange(e)}
+        placeholder="Search for a movie"
+        inputProps={{ 'aria-label': 'search movie' }}
+        onChange={(e) => handleSearchChange({t: e.target.value})}
       />
       <Divider className={classes.divider} orientation="vertical" />
       <IconButton
@@ -75,7 +76,7 @@ export const SearchInput: React.FunctionComponent = (props) => {
         type="submit"
         className={classes.iconButton}
         aria-label="directions"
-        onClick={() => setSelectedIndex(2)}
+        onClick={() => searchSubmit().then(() => setSelectedIndex(1))}
       >
         <SendRoundedIcon className={classes.submitBtn} />
       </IconButton>

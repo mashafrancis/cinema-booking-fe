@@ -12,7 +12,7 @@ import {renderWithRouter} from "../testHelpers";
 describe.skip('The Route components', () => {
   test('should render the homepage component', () => {
     const route = '/';
-    renderWithRouter(<HomePage/>, {route});
+    renderWithRouter(<HomePage isLoading={false}/>, {route});
     expect(screen.getByTestId('home-page').textContent).toBe('Cinema Booking')
   });
 
